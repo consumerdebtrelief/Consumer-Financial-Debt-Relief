@@ -1728,18 +1728,22 @@
 
     <!-- Multi-Step Form Section -->
     <section class="form-section" id="form-section">
-    <div class="container">
-        <div class="section-header">
-            <h2>Debt Relief Application</h2>
-            <p>Complete our simple form to start your journey to financial freedom</p>
-        </div>
-        
-        <div class="form-container" style="height: 800px;">
-            <iframe src="https://script.google.com/macros/s/AKfycbziepGNG-M_Ebc8xPHtn6jmaP43F0HSJ664sYBO0YV3/dev" 
-                    style="width: 100%; height: 100%; border: none; border-radius: var(--border-radius);"></iframe>
-        </div>
-    </div>
-</section>
+        <div class="container">
+            <div class="section-header">
+                <h2>Debt Relief Application</h2>
+                <p>Complete our simple form to start your journey to financial freedom</p>
+            </div>
+            
+            <div class="form-container">
+                <div class="form-header">
+                    <h2>Personalized Debt Relief Plan</h2>
+                    <p>Fill out this form to get a free, no-obligation consultation with our certified debt specialists</p>
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-bar-inner" id="progress-bar-inner"></div>
+                    </div>
                     <div class="progress-steps">
                         <div class="progress-step active" data-title="Debt Info">1</div>
                         <div class="progress-step" data-title="Personal Info">2</div>
@@ -1947,7 +1951,7 @@
                         
                         <div class="form-actions">
                             <button type="button" class="btn btn-outline" id="prev3">Previous</button>
-                            <button type="submit" class="btn btn-accent" id="next3">Submit Application</button>
+                            <button type="button" class="btn btn-accent" id="next3">Submit Application</button>
                         </div>
                     </div>
                     
@@ -2066,19 +2070,19 @@
     </section>
 
     <!-- Google Form Section -->
-<section class="google-form-section" style="padding: 100px 0; background: white;">
-    <div class="container">
-        <div class="section-header">
-            <h2>Quick Application</h2>
-            <p>Prefer a simpler form? Complete our streamlined application</p>
+    <section class="google-form-section" style="padding: 100px 0; background: white;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Quick Application</h2>
+                <p>Prefer a simpler form? Complete our streamlined application</p>
+            </div>
+            
+            <div class="form-container" style="height: 600px; max-width: 800px; margin: 0 auto;">
+                <iframe src="https://script.google.com/macros/s/AKfycbziepGNG-M_Ebc8xPHtn6jmaP43F0HSJ664sYBO0YV3/dev" 
+                        style="width: 100%; height: 100%; border: none; border-radius: var(--border-radius);"></iframe>
+            </div>
         </div>
-        
-        <div class="form-container" style="height: 600px; max-width: 800px; margin: 0 auto;">
-            <iframe src="https://script.google.com/macros/s/AKfycbziepGNG-M_Ebc8xPHtn6jmaP43F0HSJ664sYBO0YV3/dev" 
-                    style="width: 100%; height: 100%; border: none; border-radius: var(--border-radius);"></iframe>
-        </div>
-    </div>
-</section>
+    </section>
 
     <!-- FAQ Section -->
     <section class="faq" id="faq">
@@ -2266,7 +2270,7 @@
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.animation = 'fadeIn 0.8s ease forwards';
+                    entry.target.classList.add('animate');
                     observer.unobserve(entry.target);
                 }
             });
@@ -2289,7 +2293,7 @@
         // Form Navigation
         const steps = document.querySelectorAll('.form-step');
         const progressSteps = document.querySelectorAll('.progress-step');
-        const progressBar = document.getElementById('progress-bar-inner');
+        const progressBar = document.querySelector('.progress-bar-inner');
         let currentStep = 0;
         
         // Update progress bar
