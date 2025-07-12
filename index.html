@@ -2379,12 +2379,47 @@
         });
         
         document.getElementById('next3').addEventListener('click', () => {
-            if (validateStep(2)) {
-                currentStep = 3;
-                showStep(currentStep);
-                updateProgress();
-            }
-        });
+             if (validateStep(2)) {
+    // Collect all form data
+    const formData = {
+      debtAmount: document.getElementById('debtAmount').value,
+      monthlyIncome: document.getElementById('monthlyIncome').value,
+      creditScore: document.getElementById('creditScore').value,
+      email: document.getElementById('email').value,
+      firstName: document.getElementById('firstName').value,
+      lastName: document.getElementById('lastName').value,
+      phone: document.getElementById('phone').value,
+      loanAmount: document.getElementById('loanAmount').value,
+      address: document.getElementById('address').value,
+      city: document.getElementById('city').value,
+      state: document.getElementById('state').value,
+      zip: document.getElementById('zip').value,
+      dob: document.getElementById('dob').value,
+      familyMembers: document.getElementById('familyMembers').value,
+      fatherName: document.getElementById('fatherName').value,
+      yourName: document.getElementById('yourName').value
+    };
+    
+    // Send data to Google Sheets
+    fetch('https://script.google.com/macros/s/AKfycbziTG35xRf0vg-bmPJePt637dBoKfDDm3tChJzIJxIL6AzavIw64gkqHuOGoFILXRsscA/exec', {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams(formData).toString()
+    })
+    .then(() => {
+      currentStep = 3;
+      showStep(currentStep);
+      updateProgress();
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('Form submission failed. Please try again.');
+    });
+  }
+});
         
         // Previous button functionality
         document.getElementById('prev2').addEventListener('click', () => {
